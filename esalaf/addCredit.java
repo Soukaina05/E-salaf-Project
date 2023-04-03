@@ -11,6 +11,9 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ResourceBundle;
 public class addCredit implements Initializable {
@@ -82,9 +85,12 @@ private long client_id;
     }
 public void onSave(){
     // Get the quantity from the text field
+LocalDate date= LocalDate.now();
+    LocalDateTime currentDate =date.atStartOfDay();
+    Timestamp currentTime=Timestamp.valueOf(currentDate);
 
     int quantite = Integer.parseInt(quantity.getText());
-    credit cred = new credit(0l ,  quantite, client_id,product_id );
+    credit cred = new credit(0l ,  quantite,currentTime, client_id,product_id );
 
     try {
         creditDAO creditdao = new creditDAO();
