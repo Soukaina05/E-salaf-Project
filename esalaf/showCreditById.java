@@ -16,6 +16,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -36,7 +37,7 @@ public class showCreditById implements Initializable {
     private Label total;
 
 
-   private  long id_cli;
+    private  long id_cli;
     public void setSelecetdClient(String name, String Tele , String id) throws SQLException {
         this.nom.setText(name);
         this.tele.setText(Tele);
@@ -50,6 +51,7 @@ public class showCreditById implements Initializable {
         creditDAO credao = null;
         credao = new creditDAO();
         calculateTotal(credao.getRowsByClientId(id_cli));
+
 
 
     }
@@ -78,17 +80,22 @@ public class showCreditById implements Initializable {
         credao = new creditDAO();
         List<credit> credi=  credao.getRowsByClientId(id_cli);
         ObservableList<Integer> creditData = FXCollections.observableArrayList();
+        ObservableList<Timestamp> creditDate = FXCollections.observableArrayList();
         System.out.println( "size of the credits list " +credi.size());
         if (!credi.isEmpty()){
             for (credit credit : credi) {
 
                 int cred = credit.getQuantity();
-                System.out.println("the quantity is: " + cred);
+                Timestamp date = credit.getCredit_date();
+                System.out.println("date :" +date);
                 creditData.add(cred);
-
+                creditDate.add(date);
             }
+
+
         }// Create a new column for the credit data
         TableColumn<product, Integer> creditDataCol = new TableColumn<>("Quantité");
+        TableColumn<product, Timestamp> creditDateCol = new TableColumn<>("Date");
 
 // Set the cell value factory for the credit data column
         creditDataCol.setCellValueFactory(cellData -> {
@@ -100,9 +107,21 @@ public class showCreditById implements Initializable {
                 return new SimpleObjectProperty<>(null);
             }
         });
+        // Set the cell value factory for the credit data column
+        creditDateCol.setCellValueFactory(cellData -> {
+            product product = cellData.getValue();
+            int index = mytab2.getItems().indexOf(product);
+            if (index >= 0 && index < creditDate.size()) {
+                return new SimpleObjectProperty<>(creditDate.get(index));
+            } else {
+                return new SimpleObjectProperty<>(null);
+            }
+        });
 
 // Add the credit data column to the table
         mytab2.getColumns().add(creditDataCol);
+        mytab2.getColumns().add(creditDateCol);
+//add delete button
 
         // Set the column value factories to the appropriate properties of the product class
         produit.setCellValueFactory(new PropertyValueFactory<product, String>("name"));
@@ -137,9 +156,7 @@ public class showCreditById implements Initializable {
             productDAO prodao = new productDAO();
             long id=credit.getProduit_id();
             product p=prodao.getOne(id);
-
             totalPrice += credit.getQuantity() * p.getPrice();
-
 
         }
         total.setText(String.format("%.2f", totalPrice) +"DH");
