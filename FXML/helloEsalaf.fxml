@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="433.0" prefWidth="624.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.esalaf.helloEsalafController">
+   <children>
+      <Pane layoutY="-6.0" prefHeight="433.0" prefWidth="637.0">
+         <children>
+            <Button layoutX="89.0" layoutY="79.0" mnemonicParsing="false" onAction="#onCliButtonClick" prefHeight="53.0" prefWidth="92.0" text="view clients" />
+            <Button layoutX="89.0" layoutY="190.0" mnemonicParsing="false" onAction="#onCreditButtonClick" prefHeight="53.0" prefWidth="92.0" text="view credits" />
+            <Button layoutX="89.0" layoutY="298.0" mnemonicParsing="false" onAction="#onProButtonClick" prefHeight="53.0" prefWidth="92.0" text="view products" />
+            <Label layoutX="172.0" layoutY="14.0" prefHeight="53.0" prefWidth="325.0" text="Welcome To E-salaf" textFill="#bf1b1b">
+               <font>
+                  <Font name="Andalus" size="31.0" />
+               </font></Label>
+            <ImageView fitHeight="274.0" fitWidth="377.0" layoutX="242.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../storePic.jpg" />
+               </image>
+            </ImageView>
+         </children></Pane>
+   </children>
+</AnchorPane>

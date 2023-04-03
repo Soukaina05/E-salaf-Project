@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="355.0" prefWidth="731.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.esalaf.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <Label text="Nom :" />
+   <TextField fx:id="nom" />
+   <Label text="Telephone :" />
+   <TextField fx:id="tele" />
+
+   
+    <Button fx:id="ok" onAction="#onSaveButtonClick" text="Save!" />
+   <TableView fx:id="mytab" prefHeight="200.0" prefWidth="200.0">
+     <columns>
+       <TableColumn fx:id="col_id" prefWidth="75.0" text="ID" />
+         <TableColumn fx:id="col_nom" prefWidth="75.0" text="Nom" />
+         <TableColumn fx:id="col_tele" prefWidth="75.0" text="Tele" />
+         <TableColumn fx:id="col_del" prefWidth="75.0" text="delete" />
+         <TableColumn fx:id="col_update" prefWidth="75.0" text="update" />
+         <TableColumn fx:id="col_new" prefWidth="150.0" text="new credit" />
+         <TableColumn fx:id="col_check" prefWidth="150.0" text="check credit" />
+     </columns>
+      <columnResizePolicy>
+         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+      </columnResizePolicy>
+   </TableView>
+</VBox>
