@@ -45,8 +45,11 @@ public class creditDAO extends  BaseDAO<credit> {
             mylist.add( new credit(
                     this.resultSet.getLong(1) ,
                     this.resultSet.getInt(2),
+                    this.resultSet.getTimestamp(3),
+
                     this.resultSet.getLong(4),
                     this.resultSet.getInt(5)
+
 
 
             ));
@@ -111,6 +114,8 @@ public class creditDAO extends  BaseDAO<credit> {
             mylist.add( new credit(
                     this.resultSet.getLong(1) ,
                     this.resultSet.getInt(2),
+                    this.resultSet.getTimestamp(3),
+
                     this.resultSet.getLong(4),
                     this.resultSet.getInt(5)
 
